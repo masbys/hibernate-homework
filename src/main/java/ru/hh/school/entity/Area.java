@@ -20,9 +20,6 @@ public class Area {
     @Column(name = "name")
     private String name;
 
-    public Area() {
-    }
-
     public String getName() {
         return name;
     }

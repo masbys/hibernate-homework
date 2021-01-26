@@ -42,9 +42,6 @@ public class Employer {
     @Column(name = "block_time")
     private LocalDateTime blockTime;
 
-    public Employer() {
-    }
-
     public List<Vacancy> getVacancies() {
         return vacancies;
     }
