@@ -2,12 +2,19 @@ package ru.hh.school.entity;
 
 import org.hibernate.annotations.Cascade;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static javax.persistence.FetchType.LAZY;
+import static javax.persistence.GenerationType.IDENTITY;
 import static org.hibernate.annotations.CascadeType.SAVE_UPDATE;
 
 //TODO: оформите entity
@@ -16,7 +23,7 @@ import static org.hibernate.annotations.CascadeType.SAVE_UPDATE;
 public class Employer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "employer_id")
     private Integer id;
 
@@ -28,7 +35,7 @@ public class Employer {
     @Column(name = "creation_time")
     private LocalDateTime creationTime;
 
-    @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employer", fetch = LAZY)
     @Cascade(SAVE_UPDATE)
     private final List<Vacancy> vacancies = new ArrayList<>();
 
